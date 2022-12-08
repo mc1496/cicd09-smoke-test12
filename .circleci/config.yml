@@ -35,10 +35,10 @@ jobs:
             command: |
               TEST=XAM
               # Test if website exists
-              if [[ $TEST = "YXAR" ]];then
-                return 0
+              if [[ $TEST = YXAR ]];then
+                exit(0)
               else
-                return 1
+                exit(1)
               fi
         - destroy_environment                    
 
