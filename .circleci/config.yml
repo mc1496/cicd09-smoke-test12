@@ -27,16 +27,15 @@ jobs:
                 --region us-east-1
   smoke_test:
       docker:
-        - image: alpine:latest
+        - image: cimg/aws:2022.11
       steps:
-        - run: apk add --update curl
+        #- run: apk add --update curl
         - run:
             name: smoke test
             command: |
-              URL="https://blog.udacity777.com/"
+              TEST=XAM
               # Test if website exists
-              if curl -s --head ${URL} 
-              then
+              if [[ $TEST = "YXAR" ]];then
                 return 0
               else
                 return 1
