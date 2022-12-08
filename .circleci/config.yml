@@ -35,10 +35,11 @@ jobs:
             command: |
               TEST=XAM
               # Test if website exists
+              #/bin/bash: line 6: return: can only `return' from a function or sourced script
               if [[ $TEST = YXAR ]];then
-                return 0
+                exit 0
               else
-                return 1
+                exit 1
               fi
         - destroy_environment                    
 
