@@ -36,7 +36,7 @@ jobs:
               TEST=XAM
               # Test if website exists
               #/bin/bash: line 6: return: can only `return' from a function or sourced script
-              if [[ $TEST = XAM ]];then
+              if [[ $TEST = YXAR ]];then
                 exit 0
               else
                 exit 1
