@@ -9,7 +9,17 @@ commands:
           # ${CIRCLE_WORKFLOW_ID:0:5} takes the first 5 chars of the variable CIRCLE_CI_WORKFLOW_ID 
           when: on_fail
           command: |
-            aws cloudformation delete-stack --stack-name xam-ec2-${CIRCLE_WORKFLOW_ID:0:5}
+            #aws cloudformation delete-stack --stack-name xam-ec2-${CIRCLE_WORKFLOW_ID:0:5}
+            ./delete.sh xam-ec2-${CIRCLE_WORKFLOW_ID:0:5}
+  destroy_message_on_fail:
+      steps:
+        - run:
+            name: Destroy message on fail
+            # ${CIRCLE_WORKFLOW_ID} is a Built-in environment variable 
+            # ${CIRCLE_WORKFLOW_ID:0:5} takes the first 5 chars of the variable CIRCLE_CI_WORKFLOW_ID 
+            when: on_fail
+            command: |
+              echo "Check If two on-fail commands can go through "         
 
 jobs:
   create_infrastructure: 
@@ -41,6 +51,7 @@ jobs:
               else
                 exit 1
               fi
+        - destroy_message_on_fail
         - destroy_environment                    
 
 workflows:
