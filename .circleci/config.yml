@@ -40,6 +40,7 @@ jobs:
         - image: cimg/aws:2022.11
       steps:
         #- run: apk add --update curl
+        - checkout
         - run:
             name: smoke test
             command: |
